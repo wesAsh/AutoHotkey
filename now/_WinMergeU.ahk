@@ -28,6 +28,16 @@ Space & h::
 		
 		ModeDisplayToolTip(WinmergeMod)
 		return
+Esc::
+	WinmergeMod := 1
+	ModeDisplayToolTip(WinmergeMod)
+	return
+SC027::
+	WinmergeMod := 0
+	ModeDisplayToolTip(WinmergeMod)
+	return
+	
+^d:: SendInput, {Del}
 
 
 #if WinActive("ahk_exe WinMergeU.exe") and WinmergeMod = 1

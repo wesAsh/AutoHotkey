@@ -22,6 +22,15 @@
 		return
 	!0:: send, send, ^{Tab}         ; ^{PgDn}
 	!9:: send, send, ^+{Tab}        ; ^{PgUp}
+	
+	^l:: SendInput, ^{Tab}         ; ^{PgDn}
+	^j:: SendInput, ^+{Tab}        ; ^{PgUp}
+	
+	!d:: 
+		SendInput, !d{sleep 80}{Tab}{Tab}{sleep 80}
+		WinSCP_Mod := 1
+		ModeDisplayToolTip(WinSCP_Mod)
+		return
 ; ▲
 
 #if WinActive("ahk_exe WinSCP.exe") and WinSCP_Mod= 1
@@ -44,6 +53,11 @@
 		WinmergeMod := 0
 		MsgBox, 16, HOTKEYS WESLEY, INSERT, 0.4
 		SendInput, {F2}
+		return
+	/:: 
+		SendInput, +{Tab}+{Tab}
+		WinSCP_Mod := 0
+		ModeDisplayToolTip(WinSCP_Mod)
 		return
 ; ▲
 

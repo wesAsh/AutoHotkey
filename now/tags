@@ -1,0 +1,16 @@
+SC027	C:/aRoot/AutoHotkey/now/NotIncluded/_Explanations.ahk	/SC027
+ModeDisplayToolTip	C:/aRoot/AutoHotkey/now/_keys.ahk	/ModeDisplayToolTip(ByRef val1)
+ActivateClover	C:/aRoot/AutoHotkey/now/_keys.ahk	/ActivateClover()
+WindowMove	C:/aRoot/AutoHotkey/now/WindowMove.ahk	/ 
+_Explorer	C:/aRoot/AutoHotkey/now/_Explorer.ahk	/ 
+_Internet	C:/aRoot/AutoHotkey/now/_Internet.ahk	/Internet
+_Internet_Copy_CompareFiles	C:/aRoot/AutoHotkey/now/_Internet_Copy_CompareFiles.ahk	/ 
+_MPC	C:/aRoot/AutoHotkey/now/_MPC.ahk	/ 
+_Terminals	C:/aRoot/AutoHotkey/now/_Terminals.ahk	/ 
+_VS_GVIM_Interaction	C:/aRoot/AutoHotkey/now/_VS_GVIM_Interaction.ahk	/ 
+_WinMergeU	C:/aRoot/AutoHotkey/now/_WinMergeU.ahk	/ 
+_WinSCP	C:/aRoot/AutoHotkey/now/_WinSCP.ahk	/ 
+_WordVimMod	C:/aRoot/AutoHotkey/now/_WordVimMod.ahk	/ 
+_gVim_Extend_Keys	C:/aRoot/AutoHotkey/now/_gVim_Extend_Keys.ahk	/ 
+_z_ToolTipFont	C:/aRoot/AutoHotkey/now/_z_ToolTipFont.ahk	/ 
+google_translate_explorer	C:/aRoot/AutoHotkey/now/google_translate_explorer.ahk	/ 

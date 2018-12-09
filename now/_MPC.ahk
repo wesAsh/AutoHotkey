@@ -1,11 +1,17 @@
 ﻿#if WinActive("ahk_exe mpc-hc64.exe")
 
-Esc::
-0::
-9::
-8::
-	send, {space}
-	WinActivate, ahk_exe WINWORD.exe
+; Esc::
+; 0::
+; 9::
+; 8::
+	; send, {space}
+	; WinActivate, ahk_exe WINWORD.exe
+	; return
+	
+#if WinActive("ahk_exe mpc-hc64.exe") and MPC_Mode = 0
+Space & j::
+	MPC_Mode := 1
+	MsgBox, 64, HOTKEYS WESLEY, VIM MODE, 0.8
 	return
 #if WinActive("ahk_exe mpc-hc64.exe") and MPC_Mode = 1
 
@@ -17,8 +23,8 @@ Esc::
 	
 	q:: SendInput, ^{q}{sleep 100}+{Tab}{sleep 100}+{Tab}{sleep 100}{down}{sleep 100}{up}
 
-; !j::  SendInput, !{left}
-; !l::  SendInput, !{right}
+	!j::  SendInput, !{left}
+	!l::  SendInput, !{right}
 
 
 Space & j::

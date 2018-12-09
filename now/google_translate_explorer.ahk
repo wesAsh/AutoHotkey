@@ -1,74 +1,84 @@
 ﻿; Internet explorer on google translate... for easy translating
 
-; » Now I include this from the _keys.ahk, so no need for the delay etc "Header"
 
-	; #NoEnv
-	; SetWorkingDir %A_ScriptDir%
-	; SetKeyDelay, 50
+#ifWinActive ahk_class IEFrame ; iexplore.exe    ; Internet Explorer
+; ▼
+; only Ctrl+Tab and Ctrl+Shift+Tab works on this browser to cycle tabs..
+; Ctrl+PageUp and Ctrl+PageDown work on most but not this.
+<!.::
+Space & .::
+!0:: send, ^{Tab}           ; send, ^{PgDn}
+Space & ,::
+<!,::
+!9:: send, ^+{Tab}         ; send, ^{PgUp}
+Space & b::
+!-:: send, !{Left}     ; backward
+!=:: send, !{Right}    ; forward again in directories =
 
-; §
+	; focus on page content. can be done also by: SendInput, !{d}{F6}{F6}
+	; <!f:: SendInput, !{d}+{F6}
 
-
-; #ifWinActive, ahk_exe iexplore.exe
-#if WinActive("Google Translate - Google Chrome") || WinActive("ahk_exe iexplore.exe")
-; Space & h: ; be carful with this. might overrides all Space & key mappings
-<!h::
-	; this was send, but sendInput also work and fast
-	sendInput, !{Shift}+{Tab}+{Tab}+{Tab}+{Tab}+{Tab}+{Tab}{Enter}
-	return
-	
-	; MouseMove, 1296, 318
-	; MouseClick , left, 1296, 318, 1
-	; return
-	
-	; » before was:
-		sendInput, !{Shift}
-		; putting the above in the end didnt work well
-		sleep, 50
-		send, +{Tab}
-		sleep, 50
-		send, +{Tab}
-		sleep, 50
-		send, +{Tab}
-		sleep, 50
-		send, +{Tab}
-		sleep, 50
-		send, +{Tab}
-		sleep, 50
-		send, +{Tab}
-		sleep, 50
-		send, {Enter}
-		sleep, 100
+	; focus on text you write
+	8::
+	<!f::
+		MouseClick, left, 376, 278
+		MouseMove, 376, 700
+		sleep, 200
 		return
-	; §
+	; copy translation:
+	^y::MouseClick , left, 1088, 354
+	
+	; swap languages. the second works better
+	; <!h:: Send, +^s
+	^s::
+	<!h::
+		Send, {shift down}{ctrl down}s{shift up}{ctrl up}
+		; Send, s
+		; Send, {shift up}{ctrl up}
+		if (LanguageExplorer = 1) {
+			LanguageExplorer := 2
+			PostMessage, 0x50, 0, 0x40d040d,, A ; changes to hebrew
+		} else {
+			LanguageExplorer := 1
+			PostMessage, 0x50, 0, 0x4090409,, A ; changes to english
+		}
+		return
+		
+		<!::
+		LAlt:: ; not disable actually. my problem is that with alt it's imediatly jumpt to menu
+			return
 
-<!j:: sendInput, !{Shift}
-
-; what is this???
-<!+::
-	send, !+{Tab}
+; ▲
+#If WinActive("ahk_class IEFrame") and InternetVimMod = 0
+; ▼
+Space & j::
+Capslock::
+Space & h::
+	InternetVimMod := 1
+	MsgBox, 64, HOTKEYS WESLEY, Vim NORMAL Mode!!, 0.5
 	return
+; ▲
+#If WinActive("ahk_class IEFrame") and InternetVimMod = 1
+; ▼
+	Space & j::
+	Capslock::
+	Space & h::
+		InternetVimMod := 0
+		MsgBox, 16, HOTKEYS WESLEY, Regular, 0.5
+		return
+	; Space{l}::
+	0:: send ^{Tab}       ; send, ^{PgDn}
+	9:: send ^+{Tab}       ; send, ^{PgUp}
+	b::
+	-:: send, !{Left}     ; backward
+	=:: send, !{Right}    ; forward again in directories =
+	
+	j::send, {Left}
+	l::send, {Right}
+	i::send, {Up}
+	k::send, {Down}
+; ▲
 
-
-#if (!WinActive("Google Translate - Google Chrome") && !WinActive("ahk_exe iexplore.exe") && !WinActive("ahk_exe gvim.exe") && !WinActive("ahk_exe devenv.exe"))
-; #ifWinNotActive, ahk_exe gvim.exe
-
-<!h::
-	If !GetKeyState("Shift","p") {
-		PostMessage, 0x50, 0, 0x4090409,, A
-	} else {
-		PostMessage, 0x50, 0, 0x40d040d,, A ; changes to hebrew
-	}
-	return
-
-; 8:: PostMessage, 0x50, 0, 0x4090409,, A ; 0x50 is WM_INPUTLANGCHANGEREQUEST.
-; 7:: PostMessage, 0x50, 0, 0x40d040d,, A ; changes to hebrew
-
-#.:: PostMessage, 0x50, 0, 0x4090409,, A ; 0x50 is WM_INPUTLANGCHANGEREQUEST.
-#,:: PostMessage, 0x50, 0, 0x40d040d,, A ; changes to hebrew
-
-LWin & .:: PostMessage, 0x50, 0, 0x4090409,, A ; 0x50 is WM_INPUTLANGCHANGEREQUEST.
-LWin & ,:: PostMessage, 0x50, 0, 0x40d040d,, A ; changes to hebrew
 
 
 ; vim:foldmethod=marker:fmr=»,§

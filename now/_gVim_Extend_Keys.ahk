@@ -26,6 +26,7 @@ Space & f:: ; »
 ; » Ctrl+key and Ctrl+Shift+key problem fixes..
 ; <C-1> etc doesn't work in vim. a known problem they say.
 ; a little solution for now:
+; now if you type Ctrl-1 in gVim cmd then if there is no mapping for that, you will see <F15>1 is typed etc
 ^1:: sendInput, {f15}1
 ^2:: sendInput, {f15}2
 ^3:: sendInput, {f15}3
@@ -45,6 +46,8 @@ Space & f:: ; »
 ^i:: sendInput, {f15}i
 ^+i:: sendInput, {f15}I
 ; §
+
+^+t:: sendInput, {f15}T
 
 #ifWinNotActive, ahk_exe gvim.exe
 

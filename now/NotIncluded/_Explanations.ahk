@@ -17,3 +17,8 @@ MsgBox, 64, HOTKEYS WESLEY, Vim NORMAL!!!!, 0.5
 #if WinActive("ahk_exe chrome.exe") ; also work well
 #if WinActive("ahk_exe chrome.exe") || WinActive("ahk_exe firefox.exe")
 
+
+j::SendInput, {SC027}   ; this is how you send semicolon ';' @learn
+
+; Positions:
+; learn: Top-left = 0,0. Top-right = W,0. Bottom-right = W,H. Bottom-left = 0,H
