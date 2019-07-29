@@ -20,4 +20,6 @@
 ; §								
 
 
+Added from user02 on C:/bugsCrush/nisoyGit2/now/_a_Header_Diff_times.ahk.
+
 ; vim:foldmethod=marker:fmr=»,§:filetype=autohotkey.txtfmt
